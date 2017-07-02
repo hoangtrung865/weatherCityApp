@@ -20,12 +20,12 @@ import butterknife.InjectView;
  */
 
 public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHolder>{
-    @InjectView(R.id.cityName)
-    TextView txtCityName;
+
     private List<CityModel> cityList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
+        @InjectView(R.id.cityName)
+        TextView txtCityName;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.inject(this,itemView);
@@ -46,7 +46,8 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        CityModel city = cityList.get(position);
+        holder.txtCityName.setText(city.getCityName());
     }
 
     @Override

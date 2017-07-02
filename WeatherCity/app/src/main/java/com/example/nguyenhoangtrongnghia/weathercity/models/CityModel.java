@@ -5,7 +5,8 @@ package com.example.nguyenhoangtrongnghia.weathercity.models;
  */
 
 public class CityModel {
-    private String city;
+    private String cityName;
+    private String langCode;
     private Boolean isBookMark;
 
 
@@ -13,13 +14,6 @@ public class CityModel {
 
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
 
     public Boolean getBookMark() {
         return isBookMark;
@@ -27,5 +21,21 @@ public class CityModel {
 
     public void setBookMark(Boolean bookMark) {
         isBookMark = bookMark;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getLangCode() {
+        return langCode;
+    }
+
+    public void setLangCode(String langCode) {
+        this.langCode = langCode;
     }
 }
