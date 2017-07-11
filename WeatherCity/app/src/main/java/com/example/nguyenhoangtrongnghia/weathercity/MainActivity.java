@@ -3,6 +3,8 @@ package com.example.nguyenhoangtrongnghia.weathercity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.nguyenhoangtrongnghia.weathercity.Utils.Constant;
+import com.example.nguyenhoangtrongnghia.weathercity.models.HomeFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    Fragment fragment;
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +43,16 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        if(savedInstanceState == null){
+            fragment = new HomeFragment(this);
+            fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.frame_content_navigation, fragment)
+                    .commit();
+
+            // update selected item and title, then close the drawer
+            setTitle(R.string.title_home);
+        };
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -81,7 +97,10 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            setTitle(R.string.title_home);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_content_navigation, Fragment.instantiate(MainActivity.this, Constant.HomeFragment), "HOME_FRAGMENT" )
+                    .commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

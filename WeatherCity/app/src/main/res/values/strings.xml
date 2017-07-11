@@ -5,4 +5,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="title_home">Home</string>
+    <!--Message content-->
+    <string name="c_dialog_message_no_network">The network is not available. Please check your connection.</string>
+
+    <!--Button title-->
+    <string name="c_btn_ok">OK</string>
+    <string name="c_btn_cancel">Cancel</string>
 </resources>
